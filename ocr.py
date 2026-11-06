@@ -6,7 +6,6 @@ import pymupdf as fitz
 from paddleocr import PaddleOCR
 
 pdf = Path(sys.argv[1]).resolve()
-ausgabe = pdf.with_name(pdf.stem + "_ocr.pdf")
 scale = 2
 
 ocr = PaddleOCR(
@@ -52,6 +51,6 @@ with fitz.open(pdf) as original, fitz.open() as neu:
                 overlay=True,
             )
 
-    neu.save(ausgabe, deflate=True)
+    neu.save(pdf, deflate=True)
 
-print(f"Gespeichert: {ausgabe}")
+print(f"Gespeichert: {pdf}")
